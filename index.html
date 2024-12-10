@@ -1,169 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Character Builder</title>
-  <script src="https://cdn.jsdelivr.net/npm/wired-elements@1.0.0-beta.6/wired-elements.js"></script>
-  <script src="https://cdn.hax.cloud/haxtools/rpg-character.js"></script>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Demonstration for rpg-me">
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: space-between;
-      padding: 20px;
+    :root, html, body {
+      margin: 0;
+      padding: 0;
     }
-    .left-column, .right-column {
-      flex: 1;
-    }
-    .right-column {
-      max-width: 300px;
-    }
-    .form-group {
-      margin-bottom: 20px;
-    }
-    .share-link {
-      margin-top: 20px;
-      font-weight: bold;
-    }
-    .character-container {
+    #thing h1 {
+      margin: var(--ddd-spacing-2);
+      padding: var(--ddd-spacing-6);
+      border-radius: var(--ddd-radius-md);
       text-align: center;
+      color: var(--ddd-theme-default-white);
+      font-family: var(--ddd-font-secondary);
+      background-color: var(--ddd-theme-default-potential70);
+    }
+    #thing {
+      margin: var(--ddd-spacing-2);
+    }
+    rpg-me {
+      font-family: var(--ddd-font-secondary);
+      background-color: var(--ddd-theme-default-potential50);
+      border-radius: var(--ddd-radius-md);
+    }
+    rpg-me:hover {
+      box-shadow: var(--ddd-boxShadow-sm);
     }
   </style>
+  <title>rpg-me</title>
 </head>
+
 <body>
-  <!-- Left Column: Display Character -->
-  <div class="left-column character-container">
-    <rpg-character id="character" height="300" width="300"></rpg-character>
-    <div id="seed-display"></div>
+  <div id="thing">
+    <h1>Create your character!</h1>
+    <rpg-me></rpg-me>
   </div>
-
-  <!-- Right Column: Character Settings -->
-  <div class="right-column">
-    <h2>Character Settings</h2>
-
-    <!-- Accessories Input -->
-    <div class="form-group">
-      <label for="accessories">Accessories:</label>
-      <wired-radio-group id="accessories">
-        <wired-radio value="0">0</wired-radio>
-        <wired-radio value="1">1</wired-radio>
-        <wired-radio value="2">2</wired-radio>
-        <wired-radio value="3">3</wired-radio>
-        <wired-radio value="4">4</wired-radio>
-        <wired-radio value="5">5</wired-radio>
-        <wired-radio value="6">6</wired-radio>
-        <wired-radio value="7">7</wired-radio>
-        <wired-radio value="8">8</wired-radio>
-        <wired-radio value="9">9</wired-radio>
-      </wired-radio-group>
-    </div>
-
-    <!-- Base Input -->
-    <div class="form-group">
-      <label for="base">Base:</label>
-      <wired-radio-group id="base">
-        <wired-radio value="1">Male (0-4)</wired-radio>
-        <wired-radio value="5">Female (5-9)</wired-radio>
-      </wired-radio-group>
-    </div>
-
-    <!-- Hat Color Input -->
-    <div class="form-group">
-      <label for="hatcolor">Hat Color:</label>
-      <wired-radio-group id="hatcolor">
-        <wired-radio value="0">Red</wired-radio>
-        <wired-radio value="1">Green</wired-radio>
-        <wired-radio value="2">Blue</wired-radio>
-        <wired-radio value="3">Yellow</wired-radio>
-        <wired-radio value="4">Pink</wired-radio>
-        <wired-radio value="5">Purple</wired-radio>
-        <wired-radio value="6">Black</wired-radio>
-        <wired-radio value="7">White</wired-radio>
-        <wired-radio value="8">Gray</wired-radio>
-        <wired-radio value="9">Orange</wired-radio>
-      </wired-radio-group>
-    </div>
-
-    <!-- Fire Checkbox -->
-    <div class="form-group">
-      <label for="fire">Fire:</label>
-      <wired-checkbox id="fire">Is on fire?</wired-checkbox>
-    </div>
-
-    <!-- Share Link -->
-    <div class="share-link">
-      <button id="share-button">Copy Share Link</button>
-      <div id="share-link"></div>
-    </div>
-  </div>
-
-  <script>
-    // Function to update the character based on input values
-    function updateCharacter() {
-      const character = document.getElementById("character");
-      const accessories = document.getElementById("accessories").value;
-      const base = document.getElementById("base").value;
-      const hatcolor = document.getElementById("hatcolor").value;
-      const fire = document.getElementById("fire").checked;
-
-      // Update the character's attributes
-      character.setAttribute('accessories', accessories);
-      character.setAttribute('base', base);
-      character.setAttribute('hatcolor', hatcolor);
-      character.setAttribute('fire', fire);
-
-      // Update the seed display and share link
-      const seed = generateSeed(accessories, base, hatcolor, fire);
-      document.getElementById("seed-display").innerText = `Seed: ${seed}`;
-      updateShareLink(seed);
-    }
-
-    // Function to generate a unique seed based on current settings
-    function generateSeed(accessories, base, hatcolor, fire) {
-      return `${accessories}${base}${hatcolor}${fire ? 1 : 0}`;
-    }
-
-    // Function to update the shareable link
-    function updateShareLink(seed) {
-      const url = `${window.location.origin}${window.location.pathname}?seed=${seed}`;
-      document.getElementById("share-link").innerText = `Share Link: ${url}`;
-    }
-
-    // Event listeners for inputs
-    document.getElementById("accessories").addEventListener("change", updateCharacter);
-    document.getElementById("base").addEventListener("change", updateCharacter);
-    document.getElementById("hatcolor").addEventListener("change", updateCharacter);
-    document.getElementById("fire").addEventListener("change", updateCharacter);
-
-    // Copy the share link to clipboard
-    document.getElementById("share-button").addEventListener("click", function() {
-      const shareLink = document.getElementById("share-link").innerText;
-      const textToCopy = shareLink.replace("Share Link: ", "");
-      navigator.clipboard.writeText(textToCopy)
-        .then(() => alert('Link copied to clipboard!'))
-        .catch(err => alert('Failed to copy text: ' + err));
-    });
-
-    // Handle URL parameters to prepopulate settings
-    function handleURLParams() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const seed = urlParams.get('seed');
-      if (seed) {
-        // Set the character based on seed
-        document.getElementById("accessories").value = seed[0];
-        document.getElementById("base").value = seed[1];
-        document.getElementById("hatcolor").value = seed[2];
-        document.getElementById("fire").checked = seed[3] === '1';
-
-        // Update character
-        updateCharacter();
-      }
-    }
-
-    // Initialize page
-    handleURLParams();
-    updateCharacter();
-  </script>
+  <script type="module" src="./rpg-me.js"></script>
 </body>
 </html>
