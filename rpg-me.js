@@ -21,10 +21,10 @@ export class RpgMe extends DDDSuper(I18NMixin(LitElement)) {
     this.leg = "0";
     this.face = "0";
     this.faceItem = "0";
-    this.hair = "2"; // Assuming '2' corresponds to dreads
+    this.hair = "0";
     this.pants = "0";
     this.shirt = "0";
-    this.skin = "3"; // Assuming '3' corresponds to black skin tone
+    this.skin = "0";
     this.hatColor = "0";
     this.hat = "none";
     this.fire = false;
@@ -101,20 +101,11 @@ export class RpgMe extends DDDSuper(I18NMixin(LitElement)) {
     `];
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    const character = this.shadowRoot.querySelector('rpg-character');
-    if (character) {
-      character.setSkin("3"); // Set to black skin
-      character.setHair("2"); // Set to dreads
-    }
-  }
-
   render() {
     return html`
     <div class="wrapper">
       <div class="character-box">
-        <rpg-character skin="${this.skin}" hair="${this.hair}"></rpg-character>
+        <rpg-character></rpg-character>
         <div class="seed">Seed: [seed here]</div>
         <wired-button id="share-button">Share</wired-button>
       </div>
