@@ -57,7 +57,7 @@ export class RpgMe extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        color: var(--ddd-theme-default-white);
+        color: var(--ddd-theme-default-light-blue);
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
       }
@@ -92,7 +92,7 @@ export class RpgMe extends DDDSuper(I18NMixin(LitElement)) {
         font-size: var(--ddd-font-size-s);
       }
       wired-combo {
-        color: white;
+        color: pink;
       }
       .seed {
         margin-top: var(--ddd-spacing-4);
