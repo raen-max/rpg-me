@@ -62,7 +62,7 @@ export class RpgMe extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        color: var(--ddd-theme-default-coalyGray);
+        color: var(--ddd-theme-default-pink);
         background-color: var(--ddd-theme-#BC2048);
         font-family: var(--ddd-font-secondary);
         --rpg-character-scale: 2.5;
