@@ -63,7 +63,7 @@ export class RpgMe extends DDDSuper(I18NMixin(LitElement)) {
       :host {
         display: block;
         color: var(--ddd-theme-default-coalyGray);
-        background-color: var(--ddd-theme-accent);
+        background-color: var(--ddd-theme-#BC2048);
         font-family: var(--ddd-font-secondary);
         --rpg-character-scale: 2.5;
       }
@@ -79,7 +79,7 @@ export class RpgMe extends DDDSuper(I18NMixin(LitElement)) {
         align-items: center;
         justify-content: center;
         padding: var(--ddd-spacing-4);
-        background-color: var(--ddd-theme-default-pughBlue);
+        background-color: var(--ddd-theme-default-#314D64);
         border-radius: var(--ddd-radius-md);
         outline-style: double;
         outline-color: var(--ddd-theme-default-potential70);
@@ -105,7 +105,7 @@ export class RpgMe extends DDDSuper(I18NMixin(LitElement)) {
         border-radius: var(--ddd-radius-md);
         margin-left: var(--ddd-spacing-12);
         outline-style: double;
-        outline-color: var(--ddd-theme-default-potential70);
+        outline-color: var(--ddd-theme-default-#008755);
         outline-width: var(--ddd-spacing-4);
       }
       table {
