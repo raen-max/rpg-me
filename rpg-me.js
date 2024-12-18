@@ -82,7 +82,7 @@ export class RpgMe extends DDDSuper(I18NMixin(LitElement)) {
         background-color: var(--ddd-theme-default-#314D64);
         border-radius: var(--ddd-radius-md);
         outline-style: double;
-        outline-color: var(--ddd-theme-default-potential70);
+        outline-color: var(--ddd-theme-default-#009CDE);
         outline-width: var(--ddd-spacing-4);
         box-sizing: border-box;
       }
@@ -145,7 +145,7 @@ export class RpgMe extends DDDSuper(I18NMixin(LitElement)) {
           bottom: var(--ddd-spacing-5);
           right: var(--ddd-spacing-6);
           background-color: var(--ddd-theme-default-opportunityGreen);
-          color: var(--ddd-theme-default-white);
+          color: var(--ddd-theme-default-#FFD100);
           padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
           border-radius: var(--ddd-radius-sm);
           font-size: var(--ddd-font-size-4xs);
