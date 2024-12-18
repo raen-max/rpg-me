@@ -101,7 +101,7 @@ export class RpgMe extends DDDSuper(I18NMixin(LitElement)) {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        background-color: var(--ddd-theme-default-skyLight);
+        background-color: var(--ddd-theme-default-#491D70);
         border-radius: var(--ddd-radius-md);
         margin-left: var(--ddd-spacing-12);
         outline-style: double;
